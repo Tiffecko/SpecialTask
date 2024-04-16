@@ -9,11 +9,11 @@ public class RandomDataGenerator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Генерация случайных данных:");
-        System.out.println("1. Число");
-        System.out.println("2. Строка");
-        System.out.println("3. Дата");
-        System.out.print("Выберите тип данных (1/2/3): ");
+        System.out.println("Random data generator:");
+        System.out.println("1. Number");
+        System.out.println("2. String");
+        System.out.println("3. Date");
+        System.out.println("Please, choose a type of data: ");
         int choice = scanner.nextInt();
 
         switch (choice) {
@@ -27,26 +27,26 @@ public class RandomDataGenerator {
                 generateRandomDate();
                 break;
             default:
-                System.out.println("Некорректный выбор.");
+                System.out.println("Incorrect input.");
         }
     }
 
     public static void generateRandomNumber() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите минимальное значение: ");
+        System.out.print("Write min value: ");
         int min = scanner.nextInt();
-        System.out.print("Введите максимальное значение: ");
+        System.out.print("Write max value: ");
         int max = scanner.nextInt();
 
         int randomNumber = random.nextInt(max - min + 1) + min;
-        System.out.println("Случайное число: " + randomNumber);
+        System.out.println("Random number is " + randomNumber);
     }
 
     public static void generateRandomString() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите длину строки: ");
+        System.out.print("Write length of string: ");
         int length = scanner.nextInt();
 
         StringBuilder sb = new StringBuilder();
@@ -55,18 +55,18 @@ public class RandomDataGenerator {
             sb.append(randomChar);
         }
 
-        System.out.println("Случайная строка: " + sb.toString());
+        System.out.println("Random string is " + sb);
     }
 
     public static void generateRandomDate() {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        System.out.print("Введите начальную дату (в формате dd-mm-yyyy): ");
+        System.out.print("Enter start date (dd-mm-yyyy): ");
         String startDateStr = scanner.next();
         LocalDate startDate = LocalDate.parse(startDateStr, formatter);
 
-        System.out.print("Введите конечную дату (в формате dd-mm-yyyy): ");
+        System.out.print("Enter end date (dd-mm-yyyy): ");
         String endDateStr = scanner.next();
         LocalDate endDate = LocalDate.parse(endDateStr, formatter);
 
@@ -75,6 +75,6 @@ public class RandomDataGenerator {
         long randomMillis = startMillis + random.nextInt((int) (endMillis - startMillis));
         LocalDate randomDate = LocalDate.ofEpochDay(randomMillis);
 
-        System.out.println("Случайная дата: " + randomDate.format(formatter));
+        System.out.println("Random date is " + randomDate.format(formatter));
     }
 }
